@@ -1,6 +1,6 @@
-<x-layout title="Novo Cliente">
+<x-layout title="Novo Evento">
 
-    <form action="{{ route('clientes.store') }}" method="post">
+    <form action="{{ route('eventos.store') }}" method="post">
         @csrf
 
         <div class="row mb-3">
@@ -15,12 +15,12 @@
             </div>
 
             <div class="col-4">
-                <label for="nomeEvento" class="form-label">Nome do evento:</label>
-                <input type="text"
-                       id="nomeEvento"
-                       name="nomeEvento"
+                <label for="cliente_id" class="form-label">Nome do evento:</label>
+                <input type="number"
+                       id="cliente_id"
+                       name="cliente_id"
                        class="form-control"
-                       value="{{ old('nomeEvento') }}">
+                       value="{{ old('cliente_id') }}">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
