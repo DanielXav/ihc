@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientesFormRequest;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -21,11 +22,8 @@ class ClientesController extends Controller
         return view('clientes.create');
     }
 
-    public function store(Request $request)
+    public function store(ClientesFormRequest $request)
     {
-        $request->validate([
-           'nome' => ['required', 'min:3 ']
-        ]);
 
         $cliente = Cliente::create($request->all()); // Vem todos os parametros do formulário
 
@@ -44,10 +42,11 @@ class ClientesController extends Controller
 
     public function edit(Cliente $cliente)
     {
+        //dd($cliente->eventos); // É possível pegar apenas eventos específicos
         return view('clientes.edit')->with('cliente', $cliente);
     }
 
-    public function update(Cliente $cliente, Request $request)
+    public function update(Cliente $cliente, ClientesFormRequest $request)
     {
         $cliente->fill($request->all()); // Todos os atributos
         $cliente->save();

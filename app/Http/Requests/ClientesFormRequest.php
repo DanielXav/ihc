@@ -24,7 +24,15 @@ class ClientesFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => ['required', 'min:3 '] // Pode adicionar quantas validações forem precisas
+            'nome' => ['required', 'min:3 ']
+        ];
+    }
+
+    public function messages()
+    {
+        return [ // É possível adicionar regras gerais
+            'nome.required' => 'O campo nome é obrigatório',
+            'nome.min' => 'O campo nome precisa de pelo menos :min caracteres'
         ];
     }
 }
