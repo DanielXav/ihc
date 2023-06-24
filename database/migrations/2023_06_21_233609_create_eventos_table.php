@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('eventos', function (Blueprint $table) {
             $table->id();
             $table->string('nome', 128);
-            $table->foreignId('cliente_id')->constrained()->onDelete('cascade'); // Se deletar cliente, deleta evento junto
+            //$table->foreignId('cpf_cliente')->constrained()->onDelete('cascade'); // Se deletar cliente, deleta evento junto
+            $table->unsignedBigInteger('cpf_cliente');
+            $table->foreign('cpf_cliente')->references('cpf')->on('clientes');
             $table->timestamps();
-            //$table->unsignedBigInteger('cliente_id');
-            //$table->foreign('cliente_id')->references('id')->on('clientes');
         });
     }
 

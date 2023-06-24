@@ -15,12 +15,12 @@
             </div>
 
             <div class="col-4">
-                <label for="nomeEvento" class="form-label">Nome do evento:</label>
+                <label for="cpf" class="form-label">CPF:</label>
                 <input type="text"
-                       id="nomeEvento"
-                       name="nomeEvento"
+                       id="cpf"
+                       name="cpf"
                        class="form-control"
-                       value="{{ old('nomeEvento') }}">
+                       value="{{ old('cpf') }}">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Adicionar</button>
