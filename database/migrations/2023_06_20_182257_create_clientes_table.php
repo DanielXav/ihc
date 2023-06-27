@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('cpf', 11)->unique();
             $table->string('nome', 128);
+            $table->string('telefone', 15);
+            $table->string('email', 128);
             $table->timestamps();
         });
     }

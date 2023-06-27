@@ -10,11 +10,15 @@ class ClientesController extends Controller
 {
     public function index(Request $request)
     {
-        $clientes = Cliente::all();
+        $search = $request->input('search');
+        $clientes = Cliente::where('nome', 'like', "%$search%")->get();
         $mensagemSucesso = session('mensagem.sucesso');
-        //$request->session()->forget('mensagem.sucesso');
 
-        return view('clientes.index')->with('clientes', $clientes)->with('mensagemSucesso', $mensagemSucesso);
+        return view('clientes.index', [
+            'clientes' => $clientes,
+            'search' => $search,
+            'mensagemSucesso' => $mensagemSucesso,
+        ]);
     }
 
     public function create()
