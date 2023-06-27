@@ -3,17 +3,19 @@
         .custom-table-header {
             background-color: #DA5C5C !important;
             color: #FFFFFF;
+            font-weight: bold;
         }
+
     </style>
     <div class="d-flex justify-content-center align-items-center mb-2">
         <form action="{{ route('clientes.index') }}" method="GET" class="form-inline">
             <div class="input-group">
                 <input type="text" name="search" class="form-control" placeholder="Pesquisar" value="{{ $search }}">
                 <div class="input-group-append">
-                    <button class="btn btn-dark" type="submit">
+                    <button class="btn btn-white" type="submit">
                         <i class="fas fa-search"></i>
                     </button>
-                    <a href="{{ route('clientes.create') }}" class="btn btn-dark ml-1">CADASTRAR</a>
+                    <a href="{{ route('clientes.create') }}" class="btn custom-table-header ml-1">CADASTRAR</a>
                 </div>
             </div>
         </form>
@@ -39,7 +41,7 @@
             </tr>
             </thead>
             <tbody>
-            @foreach ($clientes as $cliente)
+            @foreach ($clientes as $key => $cliente)
                 <tr>
                     <td>{{ $cliente->id }}</td>
                     <td>{{ $cliente->cpf }}</td>
