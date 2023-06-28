@@ -14,11 +14,11 @@
             margin: 20px 0;
         }
     </style>
-    <h1 class="custom-title">Página de Eventos</h1>
+    <h1 class="custom-title" style="font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; color: #DA5C5C; text-align: center; margin: 40px 0;">Página de Eventos</h1>
     <div class="d-flex justify-content-center align-items-center mb-2">
         <form action="{{ route('eventos.index') }}" method="GET" class="form-inline">
             <div class="input-group">
-                <input type="text" name="search" class="form-control" placeholder="Pesquisar" value="{{ $search }}">
+                <input type="text" name="search" class="form-control" placeholder="Pesquisar Nome ou CPF" value="{{ $search }}">
                 <div class="input-group-append">
                     <button class="btn btn-white" type="submit">
                         <i class="fas fa-search"></i>
@@ -35,7 +35,7 @@
         </div>
     @endisset
 
-    <div class="table-responsive rounded">
+    <div class="table-responsive rounded  mt-4">
         <table class="table rounded text-white table-striped table-hover">
             <thead>
             <tr>

@@ -25,7 +25,7 @@
                 border-color: #DA5C5C;
                 color: #000000;
         </style>
-        <div class="card mb-3">
+        <div class="card mb-3 mt-4">
             <div class="row g-0 d-flex align-items-center">
                 <div class="col-lg-4 d-none d-lg-flex">
                     <img src="https://i.ibb.co/pW12VjX/buffet2.jpg" alt="Trendy Pants and Shoes"
@@ -39,25 +39,23 @@
 
                             <div class="form-outline mb-4">
                                 <label for="email" class="form-label">E-mail</label>
-                                <input type="email", name="email", id="email", class="form-control">
+                                <input type="email", name="email", id="email", class="form-control" placeholder="Insira seu e-mail">
                             </div>
 
                             <div class="form-outline mb-4">
                                 <label for="password" class="form-label">Senha</label>
-                                <input type="password", name="password", id="password", class="form-control">
+                                <input type="password", name="password", id="password", class="form-control" placeholder="Insira sua senha">
                             </div>
 
                             <div class="row mb-4">
                                 <div class="col d-flex justify-content-center">
-                                    <!-- Checkbox -->
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                                        <label class="form-check-label" for="form2Example31"> Remember me </label>
+                                        <label class="form-check-label" for="form2Example31">Se lembrar</label>
                                     </div>
                                 </div>
 
                                 <div class="col">
-                                    <!-- Simple link -->
                                     <a href="{{ route('users.create') }}">Esqueceu a senha?</a>
                                 </div>
                             </div>

@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-...sKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <style>
+    body {
+        background-color: #e8eff1;
+    }
     .navbar-custom {
         background-color: #DA5C5C;
     }
@@ -39,14 +42,14 @@
             <ul class="navbar-nav ml-auto">
                 @auth()
                 <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="/clientes">Clientes</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="/eventos">Eventos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link font-weight-bold" href="/clientes">Clientes</a>
+                    <a class="nav-link font-weight-bold" href="/relatorio">Relatório</a>
                 </li>
-                    <li class="nav-item">
-                        <a class="nav-link font-weight-bold" href="/relatorio">Relatório</a>
-                    </li>
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="/como-usar">Ajuda</a>
                 </li>

@@ -12,9 +12,15 @@ class EventosController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $eventos = Evento::where('nome', 'like', "%$search%")->get();
+        $eventos = Evento::whereHas('cliente', function ($query) use ($search) {
+            $query->where(function ($query) use ($search) {
+                $query->where('nome', 'like', "%$search%")
+                    ->orWhere('cpf', 'like', "%$search%");
+            });
+        })->orWhere('nome', 'like', "%$search%")
+            ->get();
+
         $mensagemSucesso = session('mensagem.sucesso');
-        //$request->session()->forget('mensagem.sucesso');
 
         return view('eventos.index', [
             'eventos' => $eventos,

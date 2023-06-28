@@ -32,6 +32,13 @@
 
     <div class="card mb-3">
         <div class="card-body">
+            <h5 class="card-title">Pesquisar um Cliente ou Evento</h5>
+            <p class="card-text">É possível pesquisar tanto por nome quanto por CPF, porém ao pesquisar por CPF adicione os pontos nos devidos lugares. (XXX.XXX.XXX-XX)</p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
             <h5 class="card-title">Visualizar e Imprimir um relatório</h5>
             <p class="card-text">Para visualizar um relatório,  clique no nome "Relatório" no menu superior, e escolha o mês. Para imprimir basta apenas clicar no botão "Imprimir".</p>
         </div>

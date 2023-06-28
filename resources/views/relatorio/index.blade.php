@@ -15,24 +15,24 @@
             <option value="3">Novembro</option>
             <option value="3">Dezembro</option>
         </select>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Coluna 1</th>
-            <th>Coluna 2</th>
-            <!-- Adicione mais colunas conforme necessário -->
-        </tr>
-        </thead>
-        <tbody>
-        @foreach ($dados as $item)
+    <div class="table-responsive rounded  mt-4">
+        <table class="table rounded text-white table-striped table-hover">
+            <thead>
             <tr>
-                <td>{{ $item['coluna1'] }}</td>
-                <td>{{ $item['coluna2'] }}</td>
-                <!-- Preencha as células com os dados fictícios -->
+                <th class="custom-table-header text-white">Dia</th>
+                <th class="custom-table-header text-white">Orçamento</th>
             </tr>
-        @endforeach
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            @foreach ($dados as $item)
+                <tr>
+                    <td>{{ $item['coluna1'] }}</td>
+                    <td>{{ $item['coluna2'] }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+        </table>
+    </div>
         <button class="btn btn-primary custom-button" id="btnImprimir">Imprimir</button>
 
         <script>
@@ -52,5 +52,11 @@
                 background-color: #DA5C5C;
                 border-color: #DA5C5C;
                 color: #000000;
+            }
+            .custom-table-header {
+                background-color: #DA5C5C !important;
+                color: #FFFFFF;
+                font-weight: bold;
+            }
         </style>
 </x-layout>

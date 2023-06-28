@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ClientesFormRequest extends FormRequest
 {
@@ -27,7 +28,10 @@ class ClientesFormRequest extends FormRequest
             return [
                 'nome' => ['required', 'min:3'],
                 'telefone' => ['required', 'min:8'],
-                'cpf' => ['required'],
+                'cpf' => [
+                    'required',
+                    Rule::unique('clientes', 'cpf'),
+                ],
                 'email' => ['required'],
             ];
         }

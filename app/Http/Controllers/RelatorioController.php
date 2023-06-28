@@ -9,9 +9,9 @@ class RelatorioController extends Controller
     public function index()
     {
         $dados = [
-            ['coluna1' => 'Dado 1', 'coluna2' => 'Dado A'],
-            ['coluna1' => 'Dado 2', 'coluna2' => 'Dado B'],
-            ['coluna1' => 'Dado 3', 'coluna2' => 'Dado C'],
+            ['coluna1' => '21/01/2022', 'coluna2' => 'R$ 2.500'],
+            ['coluna1' => '22/01/2022', 'coluna2' => 'R$ 5.000'],
+            ['coluna1' => '23/01/2022', 'coluna2' => 'R$ 10.000'],
         ];
 
         return view('relatorio.index', ['dados' => $dados]);

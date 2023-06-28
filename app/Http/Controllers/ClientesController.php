@@ -5,13 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ClientesFormRequest;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class ClientesController extends Controller
 {
     public function index(Request $request)
     {
         $search = $request->input('search');
-        $clientes = Cliente::where('nome', 'like', "%$search%")->get();
+        $clientes = Cliente::query()
+            ->where(function ($query) use ($search) {
+                $query->where('nome', 'like', "%$search%")
+                    ->orWhere('cpf', 'like', "%$search%");
+            })
+            ->get();
         $mensagemSucesso = session('mensagem.sucesso');
 
         return view('clientes.index', [
@@ -28,6 +34,14 @@ class ClientesController extends Controller
 
     public function store(ClientesFormRequest $request)
     {
+        $cpf = $request->input('cpf');
+
+        if (Cliente::where('cpf', $cpf)->exists()) {
+            throw ValidationException::withMessages([
+                'cpf' => 'O CPF já está cadastrado.',
+            ])->redirectTo(route('clientes.create'));
+        }
+
         $fillableAttributes = (new Cliente)->getFillable();
         $rules = [];
         foreach ($fillableAttributes as $attribute) {
