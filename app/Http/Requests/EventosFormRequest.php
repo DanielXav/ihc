@@ -24,7 +24,16 @@ class EventosFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => ['required', 'min:3 ']
+            'nome' => 'required',
+            'cpf_cliente' => 'required',
+            'tipo' => 'required',
+            'orcamento' => 'required',
+            'data_evento' => 'required',
+            'rua' => 'required',
+            'numero' => 'required',
+            'bairro' => 'required',
+            'cidade' => 'required',
+            'CEP' => 'required',
         ];
     }
 

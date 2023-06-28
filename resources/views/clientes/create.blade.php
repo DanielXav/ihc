@@ -57,7 +57,7 @@
     </style>
     <script>
         document.getElementById('btn-salvar').addEventListener('click', function() {
-            if (confirm('Confirmar cadastro de cliente??')) {
+            if (confirm('Confirmar cadastro de cliente?')) {
                 document.getElementById('form-cliente').submit();
             }
         });

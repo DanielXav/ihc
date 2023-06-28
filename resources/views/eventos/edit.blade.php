@@ -21,7 +21,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="cpf_cliente" class="form-label">CPF do cliente:</label>
-                            <input type="text" id="cpf_cliente" name="cpf_cliente" class="form-control" value="{{ old('cpf_cliente') }}" maxlength="14">
+                            <input type="text" id="cpf_cliente" name="cpf_cliente" class="form-control" value="{{ $evento->cpf_cliente }}" maxlength="14">
                         </div>
 
                         <div class="col-md-6">

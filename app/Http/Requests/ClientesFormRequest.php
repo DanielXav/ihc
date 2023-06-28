@@ -23,16 +23,29 @@ class ClientesFormRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->method() === 'POST') {
+            return [
+                'nome' => ['required', 'min:3'],
+                'telefone' => ['required', 'min:8'],
+                'cpf' => ['required'],
+                'email' => ['required'],
+            ];
+        }
+
         return [
-            'nome' => ['required', 'min:3 ']
+            'nome' => ['required', 'min:3'],
+            'telefone' => ['required', 'min:8'],
+            'cpf' => [],
+            'email' => ['required'],
         ];
     }
-
     public function messages()
     {
-        return [ // É possível adicionar regras gerais
+        return [
             'nome.required' => 'O campo nome é obrigatório',
-            'nome.min' => 'O campo nome precisa de pelo menos :min caracteres'
+            'email.required' => 'O campo e-mail é obrigatório',
+            'nome.min' => 'O campo nome precisa ter pelo menos :min caracteres',
+            'telefone.min' => 'O campo telefone precisa ter pelo menos :min caracteres'
         ];
     }
 }

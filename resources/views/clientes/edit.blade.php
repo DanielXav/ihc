@@ -14,6 +14,7 @@
                                class="form-control"
                                value="{{ $cliente->nome }}">
                     </div>
+
                     <div class="mb-3">
                         <label for="telefone" class="form-label">Telefone:</label>
                         <input type="text"

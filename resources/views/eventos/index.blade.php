@@ -5,8 +5,16 @@
             color: #FFFFFF;
             font-weight: bold;
         }
+        .custom-title {
+            font-family: 'Arial', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            text-align: center;
+            margin: 20px 0;
+        }
     </style>
-
+    <h1 class="custom-title">Página de Eventos</h1>
     <div class="d-flex justify-content-center align-items-center mb-2">
         <form action="{{ route('eventos.index') }}" method="GET" class="form-inline">
             <div class="input-group">
@@ -28,7 +36,7 @@
     @endisset
 
     <div class="table-responsive rounded">
-        <table class="table rounded text-white">
+        <table class="table rounded text-white table-striped table-hover">
             <thead>
             <tr>
                 <th class="custom-table-header text-white">ID</th>
