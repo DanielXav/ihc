@@ -28,7 +28,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Relatório Mensal</h5>
                     <p class="card-text">Visualize o relatório mensal aqui.</p>
-                    <a href="" class="btn btn-primary custom-button">Ver Relatório</a>
+                    <a href="{{ route('relatorio.index') }}" class="btn btn-primary custom-button">Ver Relatório</a>
                 </div>
             </div>
         </div>

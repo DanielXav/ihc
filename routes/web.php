@@ -25,6 +25,13 @@ Route::resource('/clientes', \App\Http\Controllers\ClientesController::class)
 Route::resource('/eventos', \App\Http\Controllers\EventosController::class)
     ->except(['show'])->middleware(\App\Http\Middleware\Autenticador::class);
 
+Route::get('/relatorio', [\App\Http\Controllers\RelatorioController::class, 'index'])
+    ->name('relatorio.index')->middleware(\App\Http\Middleware\Autenticador::class);
+
+Route::get('/como-usar', function () {
+    return view('como-usar');
+})->name('como-usar')->middleware(\App\Http\Middleware\Autenticador::class);
+
 Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])
     ->name('login');
 Route::post('/login', [\App\Http\Controllers\LoginController::class, 'store'])

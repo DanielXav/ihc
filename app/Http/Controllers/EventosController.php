@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EventosFormRequest;
 use App\Models\Evento;
 use Illuminate\Http\Request;
+use App\Models\Cliente;
 
 class EventosController extends Controller
 {
@@ -29,9 +30,17 @@ class EventosController extends Controller
 
     public function store(EventosFormRequest $request)
     {
+        $cliente = Cliente::where('cpf', $request->cpf_cliente)->first();
+
+        if (!$cliente) {
+            return redirect()->route('eventos.create')
+                ->withInput($request->input())
+                ->with('mensagemErro', 'O CPF do cliente informado não existe.');
+        }
+
         $evento = Evento::create($request->all());
 
-        return to_route('eventos.index')
+        return redirect()->route('eventos.index')
             ->with('mensagem.sucesso', "Evento '{$evento->nome}' adicionado com sucesso");
     }
 

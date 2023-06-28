@@ -2,8 +2,15 @@
     <div class="container mt-4">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title my-4 text-center custom-title">Novo Cliente</h5>
-                <form action="{{ route('eventos.store') }}" method="post">
+                <h5 class="card-title my-4 text-center custom-title">Novo Evento</h5>
+
+                @if (session('mensagemErro'))
+                    <div class="alert alert-danger">
+                        {{ session('mensagemErro') }}
+                    </div>
+                @endif
+
+                <form action="{{ route('eventos.store') }}" method="post" id="form-evento">
                     @csrf
 
                     <div class="mb-3">
@@ -66,7 +73,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary custom-button">Adicionar</button>
+                    <button type="button" class="btn btn-primary custom-button" id="btn-adicionar">Adicionar</button>
                 </form>
             </div>
         </div>
@@ -86,5 +93,13 @@
             background-color: #DA5C5C;
             border-color: #DA5C5C;
             color: #000000;
+        }
     </style>
+    <script>
+        document.getElementById('btn-adicionar').addEventListener('click', function() {
+            if (confirm('Confirmar cadastro do evento?')) {
+                document.getElementById('form-evento').submit();
+            }
+        });
+    </script>
 </x-layout>

@@ -5,7 +5,6 @@
             color: #FFFFFF;
             font-weight: bold;
         }
-
     </style>
     <div class="d-flex justify-content-center align-items-center mb-2">
         <form action="{{ route('clientes.index') }}" method="GET" class="form-inline">
@@ -53,7 +52,7 @@
                         <a href="{{ route('clientes.edit', $cliente->id) }}" class="btn btn-primary btn-sm">
                             <i class="fas fa-edit"></i>
                         </a>
-                        <form action="{{ route('clientes.destroy', $cliente->id) }}" method="post" class="d-inline">
+                        <form action="{{ route('clientes.destroy', $cliente->id) }}" method="post" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir este cliente?')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">

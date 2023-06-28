@@ -58,7 +58,7 @@
 
                                 <div class="col">
                                     <!-- Simple link -->
-                                    <a href="{{ route('users.create') }}">Forgot password?</a>
+                                    <a href="{{ route('users.create') }}">Esqueceu a senha?</a>
                                 </div>
                             </div>
 

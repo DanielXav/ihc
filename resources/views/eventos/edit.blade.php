@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title my-4 text-center custom-title">Atualizar Evento</h5>
-                <form action="{{ route('eventos.update', $evento->id) }}" method="post">
+                <form action="{{ route('eventos.update', $evento->id) }}" method="post" onsubmit="return confirm('Confirmar atualização do evento?')">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">

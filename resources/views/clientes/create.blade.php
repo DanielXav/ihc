@@ -4,7 +4,7 @@
             <div class="card-body">
                 <h5 class="card-title my-4 text-center custom-title">Novo Cliente</h5>
 
-                <form action="{{ route('clientes.store') }}" method="post">
+                <form action="{{ route('clientes.store') }}" method="post" id="form-cliente">
                     @csrf
 
                     <div class="form-group">
@@ -32,7 +32,7 @@
                     </div>
 
                     <div class="form-group mt-3">
-                        <button type="submit" class="btn btn-primary custom-button">Salvar</button>
+                        <button type="button" class="btn btn-primary custom-button" id="btn-salvar">Salvar</button>
                     </div>
                 </form>
             </div>
@@ -53,5 +53,13 @@
             background-color: #DA5C5C;
             border-color: #DA5C5C;
             color: #000000;
+        }
     </style>
+    <script>
+        document.getElementById('btn-salvar').addEventListener('click', function() {
+            if (confirm('Confirmar cadastro de cliente??')) {
+                document.getElementById('form-cliente').submit();
+            }
+        });
+    </script>
 </x-layout>

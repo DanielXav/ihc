@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title my-4 text-center custom-title">Atualizar Cliente</h5>
-                <form action="{{ route('clientes.update', $cliente->id) }}" method="post">
+                <form action="{{ route('clientes.update', $cliente->id) }}" method="post" id="update-form">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -30,7 +30,7 @@
                                class="form-control"
                                value="{{ $cliente->email }}">
                     </div>
-                    <button type="submit" class="btn btn-primary custom-button">Atualizar</button>
+                    <button type="button" class="btn btn-primary custom-button" onclick="confirmUpdate()">Atualizar</button>
                 </form>
             </div>
         </div>
@@ -48,4 +48,11 @@
             color: #000000;
         }
     </style>
+    <script>
+        function confirmUpdate() {
+            if (confirm('Tem certeza que deseja atualizar este cliente?')) {
+                document.getElementById('update-form').submit();
+            }
+        }
+    </script>
 </x-layout>
