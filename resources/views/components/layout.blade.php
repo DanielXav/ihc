@@ -37,6 +37,7 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
+                @auth()
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="/eventos">Eventos</a>
                 </li>
@@ -46,6 +47,11 @@
                 <li class="nav-item">
                     <a class="nav-link font-weight-bold" href="/como-usar">Ajuda</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold" href="{{ route('logout') }}">Sair</a>
+                </li>
+                @endauth
             </ul>
         </div>
     </div>

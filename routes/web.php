@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,14 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     //return redirect('/clientes');
     return view('welcome');
-});
+})->middleware(\App\Http\Middleware\Autenticador::class);
 
 Route::resource('/clientes', \App\Http\Controllers\ClientesController::class)
-    ->except(['show']);
+    ->except(['show'])->middleware(\App\Http\Middleware\Autenticador::class);
 
 Route::resource('/eventos', \App\Http\Controllers\EventosController::class)
-    ->except(['show']);
+    ->except(['show'])->middleware(\App\Http\Middleware\Autenticador::class);
 
+Route::get('/login', [\App\Http\Controllers\LoginController::class, 'index'])
+    ->name('login');
+Route::post('/login', [\App\Http\Controllers\LoginController::class, 'store'])
+    ->name('sair');
+Route::get('/logout', [\App\Http\Controllers\LoginController::class, 'destroy'])
+    ->name('logout');
 
-
-
+Route::get('/register', [UsersController::class, 'create'])->name('users.create');
+Route::post('/register', [UsersController::class, 'store'])->name('users.store');
