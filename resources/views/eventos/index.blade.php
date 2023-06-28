@@ -56,7 +56,7 @@
                     <td>{{ $evento->cpf_cliente }}</td>
                     <td>{{ $evento->nome }}</td>
                     <td>{{ $evento->tipo }}</td>
-                    <td>{{ $evento->orcamento }}</td>
+                    <td> R$ {{ $evento->orcamento }}</td>
                     <td>{{ $evento->data_evento }}</td>
                     <td>
                         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#enderecoModal{{$evento->id}}">

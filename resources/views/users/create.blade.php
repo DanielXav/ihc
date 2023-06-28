@@ -9,18 +9,26 @@
 
                     <div class="form-group">
                         <label for="name">Nome:</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" required
-                               >
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Digite o nome" required>
+                        @error('name')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="email">E-mail:</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Digite o e-mail" required>
+                        @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group">
                         <label for="password">Senha:</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Digite o e-mail" required>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Digite a senha" required>
+                        @error('password')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
 
                     <div class="form-group mt-3">
@@ -45,5 +53,6 @@
             background-color: #DA5C5C;
             border-color: #DA5C5C;
             color: #000000;
+        }
     </style>
 </x-layout>
