@@ -18,7 +18,15 @@ return new class extends Migration
             $table->string('nome', 128);
             //$table->foreignId('cpf_cliente')->constrained()->onDelete('cascade'); // Se deletar cliente, deleta evento junto
             $table->unsignedBigInteger('cpf_cliente');
-            $table->foreign('cpf_cliente')->references('cpf')->on('clientes')->onDelete('cascade');;
+            $table->foreign('cpf_cliente')->references('cpf')->on('clientes')->onDelete('cascade');
+            $table->string('tipo', 128);
+            $table->double('orcamento')->nullable();
+            $table->date('data_evento');
+            $table->string('rua', 256);
+            $table->string('numero', 64);
+            $table->string('bairro', 128);
+            $table->string('cidade', 128);
+            $table->string('CEP', 128);
             $table->timestamps();
         });
     }

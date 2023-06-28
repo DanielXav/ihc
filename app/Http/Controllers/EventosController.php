@@ -10,11 +10,16 @@ class EventosController extends Controller
 {
     public function index(Request $request)
     {
-        $eventos = Evento::all();
+        $search = $request->input('search');
+        $eventos = Evento::where('nome', 'like', "%$search%")->get();
         $mensagemSucesso = session('mensagem.sucesso');
         //$request->session()->forget('mensagem.sucesso');
 
-        return view('eventos.index')->with('eventos', $eventos)->with('mensagemSucesso', $mensagemSucesso);
+        return view('eventos.index', [
+            'eventos' => $eventos,
+            'search' => $search,
+            'mensagemSucesso' => $mensagemSucesso,
+        ]);
     }
 
     public function create()
@@ -24,21 +29,15 @@ class EventosController extends Controller
 
     public function store(EventosFormRequest $request)
     {
-
-        $eventoData = $request->all();
-
-        $eventoData['cliente_id'] = $request->cliente_id; // Supondo que o campo cliente_id seja enviado no formulário
-
-        $evento = Evento::create($eventoData); // Vem todos os parametros do formulário
+        $evento = Evento::create($request->all());
 
         return to_route('eventos.index')
-            ->with('mensagem.sucesso', "Evento '{$evento->nome}' adicionado com sucesso"); // Sempre redirecionar para quando atualizar não enviar novamente os dados.
+            ->with('mensagem.sucesso', "Evento '{$evento->nome}' adicionado com sucesso");
     }
 
     public function destroy(Evento $evento)
     {
         $evento->delete();
-        //$request->session()->flash();
 
         return to_route('eventos.index')
             ->with('mensagem.sucesso', "Evento '{$evento->nome}' removido com sucesso");
@@ -46,13 +45,12 @@ class EventosController extends Controller
 
     public function edit(Evento $evento)
     {
-        //dd($cliente->eventos); // É possível pegar apenas eventos específicos
         return view('eventos.edit')->with('evento', $evento);
     }
 
     public function update(Evento $evento, EventosFormRequest $request)
     {
-        $evento->fill($request->all()); // Todos os atributos
+        $evento->fill($request->all());
         $evento->save();
 
         return to_route('eventos.index')
