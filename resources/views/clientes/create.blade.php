@@ -10,7 +10,7 @@
                     <div class="form-group">
                         <label for="cpf">CPF:</label>
                         <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" required
-                               value="{{ old('cpf') }}">
+                               value="{{ old('cpf') }}" maxlength="14">
                     </div>
 
                     <div class="form-group">
@@ -60,6 +60,14 @@
             if (confirm('Confirmar cadastro de cliente??')) {
                 document.getElementById('form-cliente').submit();
             }
+        });
+
+        document.getElementById('cpf').addEventListener('input', function(event) {
+            let cpf = event.target.value.replace(/\D/g, '');
+            if (cpf.length === 11) {
+                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            }
+            event.target.value = cpf;
         });
     </script>
 </x-layout>

@@ -28,11 +28,17 @@ class ClientesController extends Controller
 
     public function store(ClientesFormRequest $request)
     {
+        $fillableAttributes = (new Cliente)->getFillable();
+        $rules = [];
+        foreach ($fillableAttributes as $attribute) {
+            $rules[$attribute] = 'required';
+        }
 
-        $cliente = Cliente::create($request->all()); // Vem todos os parametros do formulário
+        $request->validate($rules);
 
-        return to_route('clientes.index')
-            ->with('mensagem.sucesso', "Cliente '{$cliente->nome}' adicionado com sucesso"); // Sempre redirecionar para quando atualizar não enviar novamente os dados.
+        $cliente = Cliente::create($request->all());
+
+        return redirect()->route('clientes.index')->with('mensagem.sucesso', "Cliente '{$cliente->nome}' cadastrado com sucesso.");
     }
 
     public function destroy(Cliente $cliente)

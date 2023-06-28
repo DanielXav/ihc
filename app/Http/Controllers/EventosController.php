@@ -59,10 +59,19 @@ class EventosController extends Controller
 
     public function update(Evento $evento, EventosFormRequest $request)
     {
+        $cliente = Cliente::where('cpf', $request->cpf_cliente)->first();
+
+        if (!$cliente) {
+            return redirect()->route('eventos.edit', $evento->id)
+                ->withInput($request->input())
+                ->with('mensagemErro', 'O CPF do cliente informado não existe.');
+        }
+
         $evento->fill($request->all());
         $evento->save();
 
-        return to_route('eventos.index')
+        return redirect()->route('eventos.index')
             ->with('mensagem.sucesso', "Evento '{$evento->nome}' atualizado com sucesso");
     }
+
 }

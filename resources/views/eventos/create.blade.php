@@ -21,7 +21,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="cpf_cliente" class="form-label">CPF do cliente:</label>
-                            <input type="number" id="cpf_cliente" name="cpf_cliente" class="form-control" value="{{ old('cpf_cliente') }}">
+                            <input type="text" id="cpf_cliente" name="cpf_cliente" class="form-control" value="{{ old('cpf_cliente') }}" maxlength="14">
                         </div>
 
                         <div class="col-md-6">
@@ -100,6 +100,14 @@
             if (confirm('Confirmar cadastro do evento?')) {
                 document.getElementById('form-evento').submit();
             }
+        });
+
+        document.getElementById('cpf_cliente').addEventListener('input', function (event) {
+            let cpf = event.target.value.replace(/\D/g, '');
+            if (cpf.length === 11) {
+                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            }
+            event.target.value = cpf;
         });
     </script>
 </x-layout>

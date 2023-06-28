@@ -25,6 +25,13 @@
 
     <div class="card mb-3">
         <div class="card-body">
+            <h5 class="card-title">Editar ou deletar um Cliente ou Evento</h5>
+            <p class="card-text">Em baixo do nome Ações na tela do Cliente / Evento existe dois botões, o azul a esquerda é para atualizar e o vermelho a direita é para deletar o Cliente / Evento da linha associada.</p>
+        </div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-body">
             <h5 class="card-title">Visualizar e Imprimir um relatório</h5>
             <p class="card-text">Para visualizar um relatório,  clique no nome "Relatório" no menu superior, e escolha o mês. Para imprimir basta apenas clicar no botão "Imprimir".</p>
         </div>

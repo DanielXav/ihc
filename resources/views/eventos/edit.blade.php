@@ -3,6 +3,13 @@
         <div class="card">
             <div class="card-body">
                 <h5 class="card-title my-4 text-center custom-title">Atualizar Evento</h5>
+
+                @if (session('mensagemErro'))
+                    <div class="alert alert-danger">
+                        {{ session('mensagemErro') }}
+                    </div>
+                @endif
+
                 <form action="{{ route('eventos.update', $evento->id) }}" method="post" onsubmit="return confirm('Confirmar atualização do evento?')">
                     @csrf
                     @method('PUT')
@@ -14,7 +21,7 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="cpf_cliente" class="form-label">CPF do cliente:</label>
-                            <input type="number" id="cpf_cliente" name="cpf_cliente" class="form-control" value="{{ $evento->cpf_cliente }}">
+                            <input type="text" id="cpf_cliente" name="cpf_cliente" class="form-control" value="{{ old('cpf_cliente') }}" maxlength="14">
                         </div>
 
                         <div class="col-md-6">
@@ -87,4 +94,13 @@
             border-color: #DA5C5C;
             color: #000000;
     </style>
+    <script>
+        document.getElementById('cpf_cliente').addEventListener('input', function (event) {
+            let cpf = event.target.value.replace(/\D/g, '');
+            if (cpf.length === 11) {
+                cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+            }
+            event.target.value = cpf;
+        });
+    </script>
 </x-layout>
